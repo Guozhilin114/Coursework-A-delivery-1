@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Seller Login</title>
+<style>
+body {
+    background: white;
+}
+h2 {
+    color: black;
+}
+a {
+    color: blue;
+}
+input {
+    border: 1px solid black;
+}
+button {
+    background: blue;
+    color: white;
+}
+</style>
+</head>
+<body>
+
+<p>CarMarket</p>
+<a href="search.html">Browse Cars</a>
+<br>
+<a href="upload.html">Upload Car</a>
+<br><br>
+
+<a href="search.html">← Back to Search</a>
+<br><br>
+
+<h2>Seller Login</h2>
+<form id="loginForm" onsubmit="return doLogin()">
+    <p>Email * <input type="email" id="email" placeholder="your@email.com"></p>
+    <p>Password * <input type="password" id="password" placeholder="Enter your password"></p>
+    <button type="submit">Login</button>
+    <br><br>
+    <p>New seller? <a href="upload.html">Register here</a></p>
+</form>
+
+<br><br>
+<p>© 2026 Used Car Marketplace</p>
+
+<script>
+function doLogin() {
+    var e = document.getElementById("email").value;
+    var p = document.getElementById("password").value;
+    
+    if (e == "" || p == "") {
+        alert("Please fill in all fields!");
+        return false;
+    }
+    
+    alert("Login successful! You can now upload cars.");
+    window.location = "upload.html";
+    return false;
+}
+</script>
+
+</body>
+</html>
