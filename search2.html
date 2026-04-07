@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Used Car Market</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial;
+            padding: 20px;
+        }
+        
+        /* Header style */
+        .header {
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #d2bdbd;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        /* Search box */
+        .search {
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        
+        .search input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        /* Cars grid */
+        .cars {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        /* Car card */
+        .car {
+            width: 250px;
+            background: white;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .car img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        
+        .car-info {
+            padding: 10px;
+        }
+        
+        .car-name {
+            margin-bottom: 5px;
+        }
+        
+        .car-price {
+            font-weight: bold;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header section -->
+    <div class="header">
+        <div class="logo">Secondhand Cars</div>
+    </div>
+    
+    <!-- Search box -->
+    <div class="search">
+        <input type="text" id="searchBox" placeholder="Search cars...">
+    </div>
+    <script>
+        // Car data array
+        var carData = [
+            {
+                name: "Toyota Camry 2019",
+                image: "https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                details: "2019, 52,000 km, good condition",
+                price: "$18,500"
+            },
+        ];
+        
+    </script>
+</body>
+</html>
