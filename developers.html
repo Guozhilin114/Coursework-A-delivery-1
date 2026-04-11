@@ -2,29 +2,67 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>developers</title>
+    <!-- Character encoding to prevent garbled text -->
+    <title>Developer Information</title>
+
     <style>
         body {
-            background-color: lightgray;
+            background-color: #f5f7fa;
+            /* Changed background color */
+            padding: 20px;
+            /* Keep content from touching the edge */
         }
+
         h1 {
-            color: black;
+            color: #2c3e50;
+            /* Darkened title color */
+            text-align: center;
+            /* Center the title */
         }
+
         table {
             border: 1px solid black;
+            border-collapse: collapse;
+            /* Merge table borders */
+            width: 100%;
+            /* Make table full width */
+            margin: 20px 0;
         }
+
         th, td {
-            border: 1px solid black;
-            padding: 5px;
+            border: 1px solid #eee;
+            padding: 10px;
+            /* Increased padding */
         }
+
+        th {
+            background-color: #3498db;
+            color: white;
+            /* Header background color */
+        }
+
         a {
-            color: blue;
+            color: #3498db;
+            text-decoration: none;
+            /* Remove link underline */
+        }
+
+        a:hover {
+            text-decoration: underline;
+            /* Show underline on hover */
+        }
+
+        .name {
+            font-weight: bold;
         }
     </style>
 </head>
+
 <body>
+    <!-- Web page main content -->
     <h1>Developer Information</h1>
 
+    <!-- Developer information table -->
     <table>
         <tr>
             <th>Name</th>
@@ -32,27 +70,28 @@
             <th>Email</th>
         </tr>
         <tr>
-            <td>Zhutongchen</td>
-            <td>-</td>
-            <td>-</td>
+            <td class="name">Zhutongchen</td>
+            <td>250001572</td>
+            <td>jp2024213885@qmul.ac.uk</td>
         </tr>
         <tr>
-            <td>Guozhilin</td>
-            <td>-</td>
-            <td>-</td>
+            <td class="name">Guozhilin</td>
+            <td>250001642</td>
+            <td>jp2024213866@qmul.ac.uk</td>
         </tr>
         <tr>
-            <td>Liujiashen</td>
-            <td>-</td>
-            <td>-</td>
+            <td class="name">Liujiashen</td>
+            <td>250001675</td>
+            <td>jp2024213875@qmul.ac.uk</td>
         </tr>
         <tr>
-            <td>Zhangchenye</td>
+            <td class="name">Zhangchenye</td>
             <td>250001712</td>
-            <td>2024213874@bupt.cn</td>
+            <td>jp2024213874@qmul.ac.uk</td>
         </tr>
     </table>
 
+    <!-- Back link -->
     <br>
     <a href="search.html">← Back to Car Marketplace</a>
 
