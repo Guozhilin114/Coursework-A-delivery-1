@@ -11,6 +11,10 @@ body {
     padding: 20px;
     /* Added padding so content doesn't stick to browser edges */
 }
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+}
 h2 {
     color: black;
     margin-top: 20px;
@@ -36,26 +40,28 @@ button {
 </head>
 <body>
 
-<p>CarMarket</p>
-<a href="search.html">Browse Cars</a>
-<br>
-<a href="upload.html">Upload Car</a>
-<br><br>
-
-<a href="search.html">← Back to Search</a>
-<br><br>
-
-<h2>Seller Login</h2>
-<form id="loginForm" onsubmit="return doLogin()">
-    <p>Email * <input type="email" id="email" placeholder="your@email.com"></p>
-    <p>Password * <input type="password" id="password" placeholder="Enter your password"></p>
-    <button type="submit">Login</button>
+<div class="container">
+    <p>CarMarket</p>
+    <a href="search.html">Browse Cars</a>
+    <br>
+    <a href="upload.html">Upload Car</a>
     <br><br>
-    <p>New seller? <a href="upload.html">Register here</a></p>
-</form>
 
-<br><br>
-<p>© 2026 Used Car Marketplace</p>
+    <a href="search.html">← Back to Search</a>
+    <br><br>
+
+    <h2>Seller Login</h2>
+    <form id="loginForm" onsubmit="return doLogin()">
+        <p>Email * <input type="email" id="email" placeholder="your@email.com"></p>
+        <p>Password * <input type="password" id="password" placeholder="Enter your password"></p>
+        <button type="submit">Login</button>
+        <br><br>
+        <p>New seller? <a href="upload.html">Register here</a></p>
+    </form>
+
+    <br><br>
+    <p>© 2026 Used Car Marketplace</p>
+</div>
 
 <script>
 function doLogin() {
