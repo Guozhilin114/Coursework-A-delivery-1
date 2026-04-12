@@ -140,4 +140,55 @@
     </style>
 </head>
 
+<body>
+    <div class="overlay"></div>
+    <div class="logo">Lingshui Used Car Market</div>
+
+    <!-- main screen area -->
+    <div class="main-screen"><a href="search.html" class="enter-button">Enter Lingshui CarMarketplace</a></div>
+
+    <!-- Introduction Text Area -->
+	/*Please replace the placeholders below directly with the text.*/
+    <section class="introduction-section" id="introduction">
+        <div class="introduction-content">
+            <h2 class="section-title">About Lingshui Used Car Market</h2>
+            <div class="intro-text">
+                <div class="placeholder-text">
+                    <p>##############################</p>
+                    <p>##############################</p>
+                    <p>##############################</p>
+                    <p>##############################</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Scroll-down fade-in effect script
+        document.addEventListener('DOMContentLoaded',
+            function () {
+                const introSection = document.getElementById('introduction');
+
+                // Listen to the scroll event
+                window.addEventListener('scroll',
+                    function () {
+                        const sectionTop = introSection.getBoundingClientRect().top;
+                        const windowHeight = window.innerHeight;
+
+                        // Show when the introduction area enters the viewport.
+                        if (sectionTop < windowHeight * 0.8) {
+                            introSection.classList.add('visible');
+                        }
+                    });
+
+                // Check once when the page loads (if the page has already scrolled).
+                const sectionTop = introSection.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (sectionTop < windowHeight * 0.8) {
+                    introSection.classList.add('visible');
+                }
+            });
+    </script>
+</body>
+    
 </html>
