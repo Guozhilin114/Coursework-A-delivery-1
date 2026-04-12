@@ -6,11 +6,26 @@
     <title>Developer Information</title>
 
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
         body {
             background-color: #f5f7fa;
             /* Changed background color */
-            padding: 20px;
+            padding: 40px 20px;
             /* Keep content from touching the edge */
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
         }
 
         h1 {
@@ -18,82 +33,111 @@
             /* Darkened title color */
             text-align: center;
             /* Center the title */
+            margin-bottom: 30px;
+            font-size: 28px;
         }
 
         table {
-            border: 1px solid black;
             border-collapse: collapse;
             /* Merge table borders */
             width: 100%;
             /* Make table full width */
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
             margin: 20px 0;
         }
 
         th, td {
-            border: 1px solid #eee;
-            padding: 10px;
+            padding: 16px;
             /* Increased padding */
+            text-align: left;
         }
 
         th {
             background-color: #3498db;
             color: white;
             /* Header background color */
+            font-weight: bold;
         }
 
-        a {
-            color: #3498db;
-            text-decoration: none;
-            /* Remove link underline */
+        td {
+            border-bottom: 1px solid #eee;
         }
 
-        a:hover {
-            text-decoration: underline;
-            /* Show underline on hover */
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover {
+            background-color: #f8f9fa;
         }
 
         .name {
             font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .student-id {
+            color: #7f8c8d;
+        }
+
+        .email {
+            color: #3498db;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            color: #3498db;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 
 <body>
-    <!-- Web page main content -->
-    <h1>Developer Information</h1>
+    <div class="container">
+        <!-- Web page main content -->
+        <h1>Developer Information</h1>
 
-    <!-- Developer information table -->
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Student ID</th>
-            <th>Email</th>
-        </tr>
-        <tr>
-            <td class="name">Zhutongchen</td>
-            <td>250001572</td>
-            <td>jp2024213885@qmul.ac.uk</td>
-        </tr>
-        <tr>
-            <td class="name">Guozhilin</td>
-            <td>250001642</td>
-            <td>jp2024213866@qmul.ac.uk</td>
-        </tr>
-        <tr>
-            <td class="name">Liujiashen</td>
-            <td>250001675</td>
-            <td>jp2024213875@qmul.ac.uk</td>
-        </tr>
-        <tr>
-            <td class="name">Zhangchenye</td>
-            <td>250001712</td>
-            <td>jp2024213874@qmul.ac.uk</td>
-        </tr>
-    </table>
+        <!-- Developer information table -->
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Student ID</th>
+                <th>Email</th>
+            </tr>
+            <tr>
+                <td class="name">Zhutongchen</td>
+                <td class="student-id">250001572</td>
+                <td class="email">jp2024213885@qmul.ac.uk</td>
+            </tr>
+            <tr>
+                <td class="name">Guozhilin</td>
+                <td class="student-id">250001642</td>
+                <td class="email">jp2024213866@qmul.ac.uk</td>
+            </tr>
+            <tr>
+                <td class="name">Liujiashen</td>
+                <td class="student-id">250001675</td>
+                <td class="email">jp2024213875@qmul.ac.uk</td>
+            </tr>
+            <tr>
+                <td class="name">Zhangchenye</td>
+                <td class="student-id">250001712</td>
+                <td class="email">jp2024213874@qmul.ac.uk</td>
+            </tr>
+        </table>
 
-    <!-- Back link -->
-    <br>
-    <a href="search.html">← Back to Car Marketplace</a>
+        <!-- Back link -->
+        <a href="search.html" class="back-link">← Back to Car Marketplace</a>
+    </div>
 
 </body>
 </html>
