@@ -20,6 +20,7 @@
             /* Keep content from touching the edge */
             display: flex;
             justify-content: center;
+            align-items: center;
             min-height: 100vh;
         }
 
@@ -38,6 +39,7 @@
         }
 
         table {
+            border: 1px solid black;
             border-collapse: collapse;
             /* Merge table borders */
             width: 100%;
@@ -45,20 +47,21 @@
             background-color: white;
             border-radius: 8px;
             overflow: hidden;
-            margin: 20px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         th, td {
+            border: none;
             padding: 16px;
             /* Increased padding */
-            text-align: left;
         }
 
         th {
             background-color: #3498db;
             color: white;
             /* Header background color */
-            font-weight: bold;
+            text-align: left;
+            font-weight: 600;
         }
 
         td {
@@ -86,17 +89,20 @@
             color: #3498db;
         }
 
-        .back-link {
-            display: block;
-            text-align: center;
-            margin-top: 30px;
+        a {
             color: #3498db;
             text-decoration: none;
+            /* Remove link underline */
+            display: inline-block;
+            margin-top: 30px;
+            text-align: center;
+            width: 100%;
             font-size: 16px;
         }
 
-        .back-link:hover {
+        a:hover {
             text-decoration: underline;
+            /* Show underline on hover */
         }
     </style>
 </head>
@@ -136,7 +142,7 @@
         </table>
 
         <!-- Back link -->
-        <a href="search.html" class="back-link">← Back to Car Marketplace</a>
+        <a href="search.html">← Back to Car Marketplace</a>
     </div>
 
 </body>
