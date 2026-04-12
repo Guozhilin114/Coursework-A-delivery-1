@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Used Car Marketplace</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f0f2f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1a73e8;
+        }
+        
+        .nav-links a {
+            color: #1a73e8;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 16px;
+        }
+        
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .search-box {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+        
+        .cars-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .car-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            cursor: pointer;
+        }
+        
+        .car-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .car-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        
+        .car-info {
+            padding: 15px;
+        }
+        
+        .car-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        
+        .car-details {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .car-price {
+            color: #1a73e8;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 40px 20px;
+            color: #777;
+            grid-column: 1 / -1;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            color: #777;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">Lingshui Used Car Market</div>
+            <div class="nav-links">
+                <a href="seller-login.html">Seller Login</a>
+                <a href="upload.html">Upload Car</a>
+                <a href="developers.html">Connecting with the developers</a>
+            </div>
+        </header>
+        
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search by brand, model or keyword...">
+        </div>
+        
+        <div class="cars-container" id="carsContainer">
+            <!-- Car cards will be added by JavaScript -->
+        </div>
+        
+    </div>
+
+    <script>
+        // Used car data
+        const cars = [
+            {
+                id: 1,
+                name: "Toyota Camry 2019",
+                image: "https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                details: "Registered 2019, 2.5L Luxury Edition, 52,000 km, good condition",
+                price: "$18,500"
+            },
+            
+            {
+                id: 4,
+                name: "Audi A4L 2021",
+                image: "https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                details: "Registered 2021, 40 TFSI Luxury, 23,000 km, like new",
+                price: "$35,200"
+            },
+            {
+                id: 5,
+                name: "Volkswagen Tiguan L 2019",
+                image: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                details: "Registered 2019, 330TSI, 45,000 km, spacious SUV",
+                price: "$20,800"
+            },
+            {
+                id: 6,
+                name: "Tesla Model 3 2022",
+                image: "https://images.unsplash.com/photo-1560958089-b8a1929cea89?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                details: "Registered 2022, Rear-wheel drive, 12,000 km, 556 km range",
+                price: "$42,500"
+            }
+        ];
+        
+        // Function to display cars
+        function displayCars(carsToShow) {
+            const carsContainer = document.getElementById('carsContainer');
+            carsContainer.innerHTML = '';
+            
+            if (carsToShow.length === 0) {
+                carsContainer.innerHTML = '<div class="no-results">No matching cars found. Try a different search.</div>';
+                return;
+            }
+        
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            displayCars(cars);
+            
+            // Add search event listener
+            const searchInput = document.getElementById('searchInput');
+            searchInput.addEventListener('input', searchCars);
+        });
+    </script>
+</body>
+</html>
