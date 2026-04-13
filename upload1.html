@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Car - Used Car Marketplace</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #e8edf4;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1a73e8;
+        }
+        
+        .nav-links a {
+            color: #1a73e8;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 16px;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #1a73e8;
+            text-decoration: none;
+        }
+        
+        .upload-form {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        textarea {
+            height: 100px;
+        }
+        
+        .file-upload {
+            border: 2px dashed #ddd;
+            border-radius: 4px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .submit-btn {
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        .success-msg {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            color: #777;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">CarMarket</div>
+            <div class="nav-links">
+                <a href="search.html">Browse Cars</a>
+                <a href="seller-login.html">Seller Login</a>
+            </div>
+        </header>
+        
+        <a href="search.html" class="back-link">← Back to Search</a>
+        
+        <div class="upload-form">
+            <h2 style="margin-bottom: 20px;">Upload Your Car</h2>
+            <form id="carUploadForm">
+                <div class="form-group">
+                    <label for="carName">Car Name *</label>
+                    <input type="text" id="carName" placeholder="e.g., Toyota Camry 2019" required>
+                </div>              
+                
+                <div class="form-group">
+                    <label for="carPrice">Price ($) *</label>
+                    <input type="number" id="carPrice" placeholder="e.g., 15000" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="carDescription">Description *</label>
+                    <textarea id="carDescription" placeholder="Describe your car's condition, features, and any other important details..." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Upload Photo *</label>
+                    <div class="file-upload">
+                        <input type="file" id="carImage" accept="image/*" required>
+                        <p>Click to select an image</p>
+                    </div>
+                </div>
+                
+                <button type="submit" class="submit-btn">Upload Car</button>
+                
+                <div class="success-msg" id="successMessage">
+                    Car uploaded successfully! Return to search page to see it in the listings.
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
