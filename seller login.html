@@ -23,11 +23,23 @@ h2 {
 a {
     color: #1a73e8;
     /* Changed link color to blue */
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+/* New form background*/
+.form-area {
+    background: white;
+    padding: 20px;
+    margin-top: 10px;
 }
 input {
     border: 1px solid black;
     padding: 5px;
     /* Added small padding */
+    width: 90%;
+    margin-top: 3px;
 }
 button {
     background: #1a73e8;
@@ -35,6 +47,7 @@ button {
     color: white;
     padding: 6px 12px;
     /* Added small padding*/
+    width: 95%;
 }
 </style>
 </head>
@@ -51,13 +64,16 @@ button {
     <br><br>
 
     <h2>Seller Login</h2>
-    <form id="loginForm" onsubmit="return doLogin()">
-        <p>Email * <input type="email" id="email" placeholder="your@email.com"></p>
-        <p>Password * <input type="password" id="password" placeholder="Enter your password"></p>
-        <button type="submit">Login</button>
-        <br><br>
-        <p>New seller? <a href="upload.html">Register here</a></p>
-    </form>
+    
+    <div class="form-area">
+        <form id="loginForm" onsubmit="return doLogin()">
+            <p>Email * <input type="email" id="email" placeholder="your@email.com"></p>
+            <p>Password * <input type="password" id="password" placeholder="Enter your password"></p>
+            <button type="submit">Login</button>
+            <br><br>
+            <p>New seller? <a href="upload.html">Register here</a></p>
+        </form>
+    </div>
 
     <br><br>
     <p>© 2026 Used Car Marketplace</p>
