@@ -15,68 +15,105 @@ body {
     max-width: 500px;
     margin: 0 auto;
 }
-h2 {
-    color: black;
-    margin-top: 20px;
-    /* Added small margin above title */
+.header {
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ddd;
 }
-a {
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1a73e8;
+    margin-bottom: 10px;
+}
+.nav-links a {
     color: #1a73e8;
     /* Changed link color to blue */
     text-decoration: none;
+    margin-right: 20px;
 }
-a:hover {
-    text-decoration: underline;
+.back-link {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #1a73e8;
+    text-decoration: none;
 }
-/* New form background*/
-.form-area {
+h2 {
+    color: black;
+    margin-bottom: 20px;
+    /* Changed from margin-top to margin-bottom */
+}
+.form-box {
     background: white;
-    padding: 20px;
-    margin-top: 10px;
+    padding: 25px;
+    border-radius: 4px;
 }
 input {
-    border: 1px solid black;
-    padding: 5px;
+    border: 1px solid #ddd;
+    /* Changed border color to softer gray */
+    padding: 8px;
     /* Added small padding */
-    width: 90%;
-    margin-top: 3px;
+    width: 100%;
+    margin-top: 5px;
 }
 button {
     background: #1a73e8;
     /* Changed button color to match links */
     color: white;
-    padding: 6px 12px;
+    padding: 10px 15px;
     /* Added small padding*/
-    width: 95%;
+    border: none;
+    border-radius: 4px;
+    width: 100%;
+    margin-top: 15px;
+    cursor: pointer;
+}
+.register-link {
+    text-align: center;
+    margin-top: 20px;
+}
+.footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+    color: #777;
+    font-size: 14px;
 }
 </style>
 </head>
 <body>
 
 <div class="container">
-    <p>CarMarket</p>
-    <a href="search.html">Browse Cars</a>
-    <br>
-    <a href="upload.html">Upload Car</a>
-    <br><br>
+    <!--Wrapped header content -->
+    <div class="header">
+        <p class="logo">CarMarket</p>
+        <div class="nav-links">
+            <a href="search.html">Browse Cars</a>
+            <a href="upload.html">Upload Car</a>
+        </div>
+    </div>
 
-    <a href="search.html">← Back to Search</a>
-    <br><br>
+    <a href="search.html" class="back-link">← Back to Search</a>
+    <br><br> 
 
     <h2>Seller Login</h2>
-    
-    <div class="form-area">
+    <!-- Wrapped form in white box -->
+    <div class="form-box">
         <form id="loginForm" onsubmit="return doLogin()">
             <p>Email * <input type="email" id="email" placeholder="your@email.com"></p>
             <p>Password * <input type="password" id="password" placeholder="Enter your password"></p>
             <button type="submit">Login</button>
-            <br><br>
-            <p>New seller? <a href="upload.html">Register here</a></p>
+            <div class="register-link">
+                <p>New seller? <a href="upload.html">Register here</a></p>
+            </div>
         </form>
     </div>
 
-    <br><br>
-    <p>© 2026 Used Car Marketplace</p>
+    <!-- Wrapped footer content -->
+    <div class="footer">
+        <p>© 2026 Used Car Marketplace</p>
+    </div>
 </div>
 
 <script>
