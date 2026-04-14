@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,116 +12,167 @@
             box-sizing: border-box;
             font-family: Arial, sans-serif;
         }
-        
+
         body {
             background-color: #f0f2f5;
             padding: 20px;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
         }
-        
+
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 30px;
             padding-bottom: 20px;
-            border-bottom: 1px solid #ddd;
+            border-bottom: 2px solid #e0e0e0;
+            /* 加粗分割线 */
         }
-        
+
         .logo {
             font-size: 24px;
             font-weight: bold;
             color: #1a73e8;
         }
-        
+
         .nav-links a {
             color: #1a73e8;
             text-decoration: none;
-            margin-left: 20px;
-            font-size: 16px;
+            margin-left: 25px;
+            /* 增加间距 */
+            font-size: 18px;
+            /* 放大字体 */
+            font-weight: 600;
+            /* 增加字重 */
+            font-family: 'Segoe UI', Arial, sans-serif;
+            /* 使用更醒目的字体 */
+            padding: 5px 0;
+            transition: color 0.2s;
         }
-        
+
         .nav-links a:hover {
-            text-decoration: underline;
+            color: #0d5bb5;
+            text-decoration: none;
         }
-        
+
         .search-box {
             background: white;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 30px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 30px;
+            /* 增加内边距 */
+            border-radius: 12px;
+            /* 增加圆角 */
+            margin-bottom: 40px;
+            /* 增加下边距 */
+            border: 2px solid #e0e0e0;
+            /* 添加边框增强分隔 */
         }
-        
+
         .search-box input {
             width: 100%;
-            padding: 12px 16px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            font-size: 16px;
+            padding: 18px 20px;
+            /* 放大输入框内边距 */
+            border: 2px solid #ddd;
+            /* 加粗边框 */
+            border-radius: 8px;
+            /* 增加圆角 */
+            font-size: 18px;
+            /* 放大字体 */
+            transition: border-color 0.3s;
         }
-        
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #1a73e8;
+            /* 聚焦时边框变蓝 */
+            box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.1);
+            /* 添加聚焦效果 */
+        }
+
         .cars-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(2, 1fr);
+            /* 改为固定两列 */
+            gap: 30px;
+            /* 增加间距 */
+            margin-bottom: 40px;
         }
-        
+
         .car-card {
             background: white;
-            border-radius: 8px;
+            border-radius: 12px;
+            /* 增加圆角 */
             overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            /* 增强阴影 */
             cursor: pointer;
+            transition: transform 0.2s;
         }
-        
+
         .car-card:hover {
             transform: translateY(-5px);
         }
-        
+
         .car-image {
             width: 100%;
-            height: 180px;
+            height: 220px;
+            /* 增加图片高度 */
             object-fit: cover;
         }
-        
+
         .car-info {
-            padding: 15px;
+            padding: 20px;
+            /* 增加内边距 */
         }
-        
+
         .car-name {
-            font-size: 18px;
+            font-size: 20px;
+            /* 放大名称字体 */
             font-weight: bold;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             color: #333;
         }
-        
+
         .car-details {
             color: #666;
-            font-size: 14px;
-            line-height: 1.5;
+            font-size: 15px;
+            /* 稍微放大详情字体 */
+            line-height: 1.6;
+            margin-bottom: 15px;
         }
-        
+
         .car-price {
             color: #1a73e8;
             font-weight: bold;
-            margin-top: 10px;
+            font-size: 18px;
+            /* 放大价格字体 */
         }
-        
+
         .no-results {
             text-align: center;
-            padding: 40px 20px;
+            padding: 50px 20px;
             color: #777;
             grid-column: 1 / -1;
+            font-size: 18px;
         }
-        
+
+        /* 滚动提示样式 */
+        .scroll-hint {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            margin-top: 20px;
+            padding-bottom: 10px;
+            display: none;
+            /* 默认隐藏，当内容超出时才显示 */
+        }
+
         footer {
             text-align: center;
-            margin-top: 40px;
+            margin-top: 50px;
             padding-top: 20px;
             border-top: 1px solid #ddd;
             color: #777;
@@ -128,6 +180,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <header>
@@ -138,37 +191,155 @@
                 <a href="developers.html">Connecting with the developers</a>
             </div>
         </header>
-        
+
         <div class="search-box">
             <input type="text" id="searchInput" placeholder="Search by brand, model or keyword...">
         </div>
-        
+
         <div class="cars-container" id="carsContainer">
             <!-- Car cards will be added by JavaScript -->
         </div>
-        
+
+        <!-- 滚动提示（当车辆较多时显示） -->
+        <!-- Scroll Prompt (Displayed when there are many vehicles) -->
+        <div class="scroll-hint" id="scrollHint">Scroll down to see more vehicles ↓</div>
     </div>
 
     <script>
-        
-        // Function to display cars
+        // Used car data
+        // 这里是展示车辆的模块，你们设计好车辆以后就在底下修改，ljs为了展示滑动功能随便填了点东西
+        //但我建议是也使用六辆车，比较好看
+        const cars = [
+            {
+                id: 1,
+                name: "Toyota Camry 2019",
+                image: "https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                details: "Registered 2019, 2.5L Luxury Edition, 52,000 km, good condition",
+                price: "$18,500"
+            },
+            {
+                id: 2,
+                name: "Honda Accord 2020",
+                image: "https://cdn.jdpower.com/ArticleImages/JDPA_2020%20Honda%20Accord%20Touring%20Red%20Front%20View.jpg",
+                details: "Registered 2020, 1.5T Turbo, 35,000 km, excellent condition",
+                price: "$20,300"
+            },
+            {
+                id: 3,
+                name: "BMW 3 Series 2020",
+                image: "https://images.unsplash.com/photo-1646987001348-a10f81886354?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                details: "Registered 2020, 320Li, 28,000 km, luxury sedan",
+                price: "$32,800"
+            },
+            {
+                id: 4,
+                name: "Audi R8 2021",
+                image: "https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                details: "Registered 2021, V10 Performance, 11,000 km, like new",
+                price: "$35,200"
+            },
+            {
+                id: 5,
+                name: "Volkswagen Tiguan L 2019",
+                image: "https://hips.hearstapps.com/hmg-prod/images/2019-volkswagen-tiguan-sel-premium-r-line-awd-110-hdr-1566309829.jpg?crop=0.715xw:0.657xh;0,0.343xh&resize=1200:*",
+                details: "Registered 2019, 330TSI, 45,000 km, spacious SUV",
+                price: "$20,800"
+            },
+            {
+                id: 6,
+                name: "Tesla Model 3 2022",
+                image: "https://images.unsplash.com/photo-1560958089-b8a1929cea89?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                details: "Registered 2022, Rear-wheel drive, 12,000 km, 556 km range",
+                price: "$42,500"
+            },
+            {
+                id: 7,
+                name: "Mercedes-Benz C-Class 2021",
+                image: "https://images.unsplash.com/photo-1652549423957-d9c4445ee9bf?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                details: "Registered 2021, C 260 L, 18,000 km, premium sedan",
+                price: "$38,500"
+            },
+            {
+                id: 8,
+                name: "Ford Explorer 2020",
+                image: "https://images.unsplash.com/photo-1606611013016-969c19ba27bb?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                details: "Registered 2020, 2.3L EcoBoost, 40,000 km, 7-seater SUV",
+                price: "$28,900"
+            }
+        ];
+
+        // Function to display cars mae by ztc
         function displayCars(carsToShow) {
             const carsContainer = document.getElementById('carsContainer');
+            const scrollHint = document.getElementById('scrollHint');
             carsContainer.innerHTML = '';
-            
+
             if (carsToShow.length === 0) {
                 carsContainer.innerHTML = '<div class="no-results">No matching cars found. Try a different search.</div>';
+                scrollHint.style.display = 'none';
                 return;
             }
-        
+
+            carsToShow.forEach(car => {
+                const carCard = document.createElement('div');
+                carCard.className = 'car-card';
+
+                carCard.innerHTML = `
+                    <img src="${car.image}" alt="${car.name}" class="car-image">
+                    <div class="car-info">
+                        <h3 class="car-name">${car.name}</h3>
+                        <p class="car-details">${car.details}</p>
+                        <div class="car-price">${car.price}</div>
+                    </div>
+                `;
+
+                // Make car card clickable to go to detail page made by ztc
+                carCard.addEventListener('click', () => {
+                    window.location.href = `car-detail.html?id=${car.id}`;
+                });
+
+                carsContainer.appendChild(carCard);
+            });
+
+            // 如果车辆超过4个，显示滚动提示，不超过你们可以删掉，但我建议是六个 made by jls
+            if (carsToShow.length > 4) {
+                scrollHint.style.display = 'block';
+            } else {
+                scrollHint.style.display = 'none';
+            }
+        }
+
+        // Search function
+        function searchCars() {
+            const searchInput = document.getElementById('searchInput');
+            const searchTerm = searchInput.value.toLowerCase().trim();
+
+            if (!searchTerm) {
+                displayCars(cars);
+                return;
+            }
+            //search by name/details/price
+            const filteredCars = cars.filter(car => {
+                return car.name.toLowerCase().includes(searchTerm) ||
+                    car.details.toLowerCase().includes(searchTerm) ||
+                    car.price.toLowerCase().includes(searchTerm);
+            });
+
+            displayCars(filteredCars);
+        }
+
         // Initialize page
         document.addEventListener('DOMContentLoaded', () => {
             displayCars(cars);
-            
+
             // Add search event listener
             const searchInput = document.getElementById('searchInput');
             searchInput.addEventListener('input', searchCars);
+
+            // 自动聚焦到搜索框
+            searchInput.focus();
         });
     </script>
 </body>
+
 </html>
