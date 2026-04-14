@@ -13,7 +13,7 @@
         }
         
         body {
-            background-color: #e8edf4;
+            background-color: #f0f2f5;
             padding: 20px;
         }
         
@@ -39,7 +39,6 @@
         
         .nav-links a {
             color: #1a73e8;
-            text-decoration: none;
             margin-left: 20px;
             font-size: 16px;
         }
@@ -132,24 +131,45 @@
             <h2 style="margin-bottom: 20px;">Upload Your Car</h2>
             <form id="carUploadForm">
                 <div class="form-group">
-                    <label for="carName">Car Name *</label>
+                    <label for="carName">Car Name</label>
                     <input type="text" id="carName" placeholder="e.g., Toyota Camry 2019" required>
-                </div>              
+                </div>
                 
                 <div class="form-group">
-                    <label for="carPrice">Price ($) *</label>
+                    <label for="carBrand">Brand</label>
+                    <select id="carBrand" required>
+                        <option value="">Select brand</option>
+                        <option value="Toyota">Toyota</option>
+                        <option value="Honda">Honda</option>
+                        <option value="BMW">BMW</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="carPrice">Price</label>
                     <input type="number" id="carPrice" placeholder="e.g., 15000" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="carDescription">Description *</label>
+                    <label for="carDescription">Description</label>
                     <textarea id="carDescription" placeholder="Describe your car's condition, features, and any other important details..." required></textarea>
                 </div>
                 
                 <div class="form-group">
-                    <label>Upload Photo *</label>
+                    <label>Upload Photo</label>
                     <div class="file-upload">
-                        <input type="file" id="carImage" accept="image/*" required>
+                        <!-- hide input space -->
+                        <input type="file" id="carImage" accept="image/*" required style="display: none;">
+                        
+                        <!-- selfset bottom -->
+                        <label for="carImage" class="custom-file-btn">
+                            Choose File <!-- your picture -->
+                        </label>
+                        
+                        <!-- name of file -->
+                        <span id="file-name" class="file-name-display">No file chosen</span>
+                        
                         <p>Click to select an image</p>
                     </div>
                 </div>
@@ -163,5 +183,45 @@
         </div>
     </div>
 
+    <script>
+        // Simple form submission
+        const form = document.getElementById('carUploadForm');
+        const successMessage = document.getElementById('successMessage');
+        
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const carName = document.getElementById('carName').value;
+            const carBrand = document.getElementById('carBrand').value;
+            const carPrice = document.getElementById('carPrice').value;
+            const carImage = document.getElementById('carImage').files[0];
+            
+            // Show success message
+            successMessage.style.display = 'block';
+            
+            // Log data (in real app, send to server)
+            console.log('Car uploaded:', {
+                name: carName,
+                brand: carBrand,
+                price: carPrice,
+                image: carImage.name
+            });
+            
+            // Reset form after 2 seconds
+            setTimeout(() => {
+                form.reset();
+                successMessage.style.display = 'none';
+            }, 3000);
+        });
+        
+        // Make file input clickable
+        const fileInput = document.getElementById('carImage');
+        const fileUploadArea = document.querySelector('.file-upload');
+        
+        fileUploadArea.addEventListener('click', () => {
+            fileInput.click();
+        });
+    </script>
 </body>
 </html>
