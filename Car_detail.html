@@ -84,6 +84,7 @@
             font-weight: bold;
             margin-bottom: 20px;
         }
+
         /*I'm experimenting with Grid layout to test out its effect.*/
         .car-specifications {
             display: grid;
@@ -194,5 +195,51 @@
             </div>
         </div>
     </div>
+
+    <script>
+        /*I'm trying to make the page dynamic today.I will use one template and change the content.Learning how to use URLSearchParams from a web tutorial.*/
+        const carDetails = {
+             1: {
+                id: 1,
+                name: "Toyota Camry 2019 - Luxury Edition",
+                image: "https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+                price: "$18,500",
+                brand: "Toyota",
+                model: "Camry",
+                year: "2019",
+                color: "Metallic Black",
+                location: "Guangzhou",
+                mileage: "52,000 km",
+                fuel: "Petrol",
+                transmission: "Automatic",
+                description: "This 2019 Toyota Camry Luxury Edition is in excellent condition with only 52,000 km. The car has a full service history, has never been in an accident, and has been well-maintained by its single owner. Features include leather seats, sunroof, navigation system, backup camera, and advanced safety features. The 2.5L engine provides excellent fuel economy while delivering smooth performance. This is a great opportunity to own a reliable, comfortable, and stylish sedan."
+            },
+            2: {
+                id: 2,
+                name: "Honda Accord 2020 - 1.5T Turbo",
+                image: "https://cdn.jdpower.com/ArticleImages/JDPA_2020%20Honda%20Accord%20Touring%20Red%20Front%20View.jpg",
+                price: "$20,300",
+                brand: "Honda",
+                model: "Accord",
+                year: "2020",
+                color: "Radiant Red Metallic",
+                location: "Sanya",
+                mileage: "35,000 km",
+                fuel: "Petrol",
+                transmission: "Automatic",
+                description: "This 2020 Honda Accord with a 1.5T Turbo engine is in excellent condition with only 35,000 km. Registered in 2020, this sleek and stylish sedan offers a perfect balance of power and fuel efficiency. It features a spacious and comfortable interior, advanced safety systems, and a smooth automatic transmission. Meticulously maintained and ready for its next owner, this Accord is a fantastic choice for a reliable daily driver."
+            },
+        }
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const carId = urlParams.get('id') || 1; 
+        const car = carDetails[carId];
+
+        if(car) {
+            document.getElementById('carTitle').textContent = car.name;
+            document.getElementById('carPrice').textContent = car.price;
+            document.getElementById('carDescription').textContent = car.description;
+        }
+    </script>
 </body>
 </html>
