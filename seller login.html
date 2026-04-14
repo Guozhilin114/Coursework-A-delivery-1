@@ -5,8 +5,16 @@
 <!-- Character encoding to prevent garbled text -->
 <title>Seller Login</title>
 <style>
+/* Global style reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
 body {
-    background: #f0f2f5;
+    background: #eee;
     /* Changed background color to soft gray*/
     padding: 20px;
     /* Added padding so content doesn't stick to browser edges */
@@ -18,7 +26,7 @@ body {
 .header {
     margin-bottom: 30px;
     padding-bottom: 15px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #ccc;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -26,11 +34,11 @@ body {
 .logo {
     font-size: 24px;
     font-weight: bold;
-    color: #1a73e8;
+    color: blue;
     margin-bottom: 10px;
 }
 .nav-links a {
-    color: #1a73e8;
+    color: blue;
     /* Changed link color to blue */
     text-decoration: none;
     margin-left: 20px;
@@ -38,7 +46,7 @@ body {
 .back-link {
     display: inline-block;
     margin-bottom: 20px;
-    color: #1a73e8;
+    color: blue;
     text-decoration: none;
 }
 h2 {
@@ -52,14 +60,14 @@ h2 {
     background: white;
     padding: 50px;
     border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 10px #ccc;
 }
 .form-inner {
     max-width: 400px;
     margin: 0 auto;
 }
 input {
-    border: 1px solid #ddd;
+    border: 1px solid #ccc;
     /* Changed border color to softer gray */
     padding: 16px;
     /* Added small padding */
@@ -70,10 +78,10 @@ input {
 }
 input:focus {
     outline: none;
-    border-color: #1a73e8;
+    border-color: blue;
 }
 button {
-    background: #1a73e8;
+    background: blue;
     /* Changed button color to match links */
     color: white;
     padding: 16px;
@@ -87,7 +95,7 @@ button {
     font-weight: bold;
 }
 button:hover {
-    background-color: #0d5bb5;
+    background: darkblue;
 }
 .register-link {
     text-align: center;
@@ -97,7 +105,7 @@ button:hover {
     text-align: center;
     margin-top: 40px;
     padding-top: 20px;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid #ccc;
     color: #777;
     font-size: 14px;
 }
@@ -148,10 +156,7 @@ button:hover {
         </div>
     </div>
 
-    <!-- Wrapped footer content -->
-    <div class="footer">
-        <p>© 2026 Used Car Marketplace</p>
-    </div>
+
 </div>
 
 <script>
