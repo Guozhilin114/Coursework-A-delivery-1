@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Car - Used Car Marketplace</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; /* Makes width/height include padding and border */
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f0f2f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto; /* Centers container horizontally */
+        }
+        
+        header {
+            display: flex; /* Creates a flexible box layout */
+            justify-content: space-between; /* Spaces items evenly with max space between */
+            align-items: center; /* Vertically centers items in the flex container */
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1a73e8;
+        }
+        
+        .nav-links a {
+            color: #1a73e8;
+            margin-left: 20px; /* Left margin for spacing between navigation links */
+            font-size: 16px;
+        }
+        
+        .back-link {
+            display: inline-block; /* Allows block properties but stays inline */
+            margin-bottom: 20px;
+            color: #1a73e8;
+            text-decoration: none;
+        }
+        
+        .upload-form {
+            background: white;
+            padding: 30px;
+            border-radius: 8px; /* Rounded corners */
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block; /* Makes label take full width (block element) */
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        textarea {
+            height: 100px; /* Fixed height for textarea */
+        }
+        
+        .file-upload {
+            border: 2px dashed #ddd; /* Dashed border for visual upload area */
+            border-radius: 4px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .submit-btn {
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer; /* Changes cursor to hand on hover */
+            width: 100%;
+        }
+        
+        .success-msg {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 20px;
+            text-align: center;
+            display: none; /* Hidden by default, will be shown with jst */
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            color: #777;
+            font-size: 14px;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      /* Universal box-sizing for consistent element dimensions */
+      * { box-sizing: border-box; }
+      
+      /* Ensure media elements scale responsively without overflow */
+      img, video, iframe { max-width: 100%; height: auto; }
+      
+      /* Responsive container: full-width on mobile, centered with max-width on desktop */
+      .container { width: min(100% - 2rem, 1200px); margin: 0 auto; }
+      
+      /* Fluid typography: scales font-size between mobile, tablet, and desktop */
+      html { font-size: clamp(1rem, 0.75rem + 0.5vw, 1.25rem); }
+      
+      /* Adaptive grid: auto-adjusts columns based on available screen space */
+      .responsive-grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">CarMarket</div>
+            <div class="nav-links">
+                <a href="search.html">Browse Cars</a>
+                <a href="seller-login.html">Seller Login</a>
+            </div>
+        </header>
+        
+        <a href="search.html" class="back-link">← Back to Search</a>
+        
+        <div class="upload-form">
+            <h2 style="margin-bottom: 20px;">Upload Your Car</h2>
+            <form id="carUploadForm">
+                <div class="form-group">
+                    <label for="carName">Car Name</label>
+                    <input type="text" id="carName" placeholder="e.g., Toyota Camry 2019" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="carBrand">Brand</label>
+                    <select id="carBrand" required>
+                        <option value="">Select brand</option>
+                        <option value="Toyota">Toyota</option>
+                        <option value="Honda">Honda</option>
+                        <option value="BMW">BMW</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="carPrice">Price</label>
+                    <input type="number" id="carPrice" placeholder="e.g., 15000" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="carDescription">Description</label>
+                    <textarea id="carDescription" placeholder="Describe your car's condition, features, and any other important details..." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Upload Photo</label>
+                    <div class="file-upload">
+                        <!-- hide input space -->
+                        <input type="file" id="carImage" accept="image/*" required style="display: none;">
+                        
+                        <!-- selfset bottom -->
+                        <label for="carImage" class="custom-file-btn">
+                            Choose File <!-- your picture -->
+                        </label>
+                        
+                        <!-- name of file -->
+                        <span id="file-name" class="file-name-display">No file chosen</span>
+                        
+                        <p>Click to select an image</p>
+                    </div>
+                </div>
+                
+                <button type="submit" class="submit-btn">Upload Car</button>
+                
+                <div class="success-msg" id="successMessage">
+                    Car uploaded successfully! Return to search page to see it in the listings.
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Simple form submission
+        const form = document.getElementById('carUploadForm');
+        const successMessage = document.getElementById('successMessage');
+        
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const carName = document.getElementById('carName').value;
+            const carBrand = document.getElementById('carBrand').value;
+            const carPrice = document.getElementById('carPrice').value;
+            const carImage = document.getElementById('carImage').files[0];
+            
+            // Show success message
+            successMessage.style.display = 'block';
+            
+            // Log data (in real app, send to server)
+            console.log('Car uploaded:', {
+                name: carName,
+                brand: carBrand,
+                price: carPrice,
+                image: carImage.name
+            });
+            
+            // Reset form after 2 seconds
+            setTimeout(() => {
+                form.reset();
+                successMessage.style.display = 'none';
+            }, 3000);
+        });
+        
+        // Make file input clickable
+        const fileInput = document.getElementById('carImage');
+        const fileUploadArea = document.querySelector('.file-upload');
+        
+        fileUploadArea.addEventListener('click', () => {
+            fileInput.click();
+        });
+    </script>
+</body>
+</html>
