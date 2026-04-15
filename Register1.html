@@ -56,7 +56,7 @@
         .back-link {
             display: inline-block;
             margin-bottom: 20px;
-            color: #1a73e8;
+            color: #0b64d8;
             text-decoration: none;
         }
 
@@ -171,6 +171,40 @@
             margin-top: 5px;
         }
     </style>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Universal box-sizing for consistent element dimensions */
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Ensure media elements scale responsively without overflow */
+        img,
+        video,
+        iframe {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Responsive container: full-width on mobile, centered with max-width on desktop */
+        .container {
+            width: min(100% - 2rem, 1200px);
+            margin: 0 auto;
+        }
+
+        /* Fluid typography: scales font-size between mobile, tablet, and desktop */
+        html {
+            font-size: clamp(1rem, 0.75rem + 0.5vw, 1.25rem);
+        }
+
+        /* Adaptive grid: auto-adjusts columns based on available screen space */
+        .responsive-grid {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+    </style>
 </head>
 
 <body>
@@ -186,7 +220,6 @@
         <a href="seller-login.html" class="back-link">← Back to Login</a>
 
         <div class="register-form">
-            // Personnal info
             <h2>Seller Registration</h2>
             <div class="form-content">
                 <form id="registerForm">
@@ -247,168 +280,138 @@
     </div>
 
     <script>
-        // Form validation logic
-        // Consider moving to separate JS file for production
+        // Simple form validation for seller registration
+        // Using regular expressions (regex) for client-side check
 
-        // Validation rules - could be expanded for server-side validation
+        // Get form and button
+        const form = document.getElementById("registerForm");
+        const submitBtn = document.getElementById("submitBtn");
 
-        const validationRules = {
-            name: {
-                validate: (value) => value.trim().length >= 2,
-                errorMessage: "Name must be at least 2 characters long"
-            },
-            address: {
-                validate: (value) => value.trim().length >= 5,
-                errorMessage: "Address must be at least 5 characters long"
-            },
-            phone: {
-                validate: (value) => /^1[3-9]\d{9}$/.test(value),
-                errorMessage: "Please enter a valid Chinese phone number (11 digits starting with 1)"
-            },
-            email: {
-                validate: (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value),
-                errorMessage: "Please enter a valid email address"
-            },
-            username: {
-                validate: (value) => /^[a-zA-Z0-9_]{4,20}$/.test(value),
-                errorMessage: "Username must be 4-20 characters (letters, numbers, underscore only)"
-            },
-            password: {
-                validate: (value) => /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*#?&]{8,}$/.test(value),
-                errorMessage: "Password must be at least 8 characters with letters and numbers"
-            }
-        };
+        // Disable submit button at start
+        submitBtn.disabled = true;
 
-        /*
-        exmaple:
-        Full name : ljs
-        Add : jsagdasgdgasjgd
-        phone num : 17730302001
-        emaikl : fdsafsdfsd@asda.com
-        name : zhutongcheng
-        password : 114514ztc      
-        */
-
-        // Form elements
-        const form = document.getElementById('registerForm');
-        const submitBtn = document.getElementById('submitBtn');
-
-        // Real-time validation
-        form.addEventListener('input', function (e) {
-            const field = e.target.id;
-            const value = e.target.value;
-
-            if (field === 'confirmPassword') {
-                validateConfirmPassword();
-            } else if (validationRules[field]) {
-                validateField(field, value);
-            }
-
-            updateSubmit();
-        });
-
-        // Field validation
-        function validateField(fieldId, value) {
-            const input = document.getElementById(fieldId);
-            const errorElement = document.getElementById(`${fieldId}-error`);
-            const rule = validationRules[fieldId];
-
-            if (!rule) return true;
-
-            const isValid = rule.validate(value);
-
-            if (isValid) {
-                input.classList.remove('error');
-                errorElement.style.display = 'none';
-            }
-            else {
-                input.classList.add('error');
-                errorElement.style.display = 'block';
-            }
-
-            return isValid;
-        }
-
-        // Confirm password validation
-        function ConfirmPassword() {
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
-            const errorElement = document.getElementById('confirm-password-error');
-            const input = document.getElementById('confirmPassword');
-
-            if (confirmPassword && password !== confirmPassword) {
-                input.classList.add('error');
-                errorElement.style.display = 'block';
-                return false;
-            }
-            else {
-                input.classList.remove('error');
-                errorElement.style.display = 'none';
-                return true;
-            }
-        }
-
-        // Update submit button state
-        function updateSubmit() {
-            let allValid = true;
-
-            // Check all required fields
-            Object.keys(validationRules).forEach(field => {
-                const value = document.getElementById(field).value;
-                if (!validateField(field, value)) {
-                    allValid = false;
-                }
+        // When user types something
+        form.addEventListener("input",
+            function () {
+                checkAllFields();
             });
 
-            // Check confirm password
-            if (!ConfirmPassword()) {
-                allValid = false;
+        // Check all fields
+        function checkAllFields() {
+
+            let nameOK = false;
+            let addressOK = false;
+            let phoneOK = false;
+            let emailOK = false;
+            let usernameOK = false;
+            let passwordOK = false;
+            let confirmOK = false;
+
+            // ===== Name: only letters and spaces =====
+            let nameInput = document.getElementById("name").value;
+            let nameRegex = /^[A-Za-z\s]+$/;
+
+            if (nameRegex.test(nameInput)) {
+                document.getElementById("name-error").style.display = "none";
+                nameOK = true;
+            }
+            else {
+                document.getElementById("name-error").style.display = "block";
+                nameOK = false;
             }
 
-            submitBtn.disabled = !allValid;
+            // ===== Address: letters, numbers and spaces =====
+            let addressInput = document.getElementById("address").value;
+            let addressRegex = /^[A-Za-z0-9\s]+$/;
+
+            if (addressRegex.test(addressInput)) {
+                document.getElementById("address-error").style.display = "none";
+                addressOK = true;
+            }
+            else {
+                document.getElementById("address-error").style.display = "block";
+                addressOK = false;
+            }
+
+            // ===== Phone: Chinese mobile number =====
+            let phoneInput = document.getElementById("phone").value;
+            let phoneRegex = /^1[3-9]\d{9}$/;
+
+            if (phoneRegex.test(phoneInput)) {
+                document.getElementById("phone-error").style.display = "none";
+                phoneOK = true;
+            }
+            else {
+                document.getElementById("phone-error").style.display = "block";
+                phoneOK = false;
+            }
+
+            // ===== Email: must end with .com or .cn, only one @ =====
+            let emailInput = document.getElementById("email").value;
+            let emailRegex = /^[^\s@]+@[^\s@]+\.(com|cn)$/;
+
+            if (emailRegex.test(emailInput)) {
+                document.getElementById("email-error").style.display = "none";
+                emailOK = true;
+            }
+            else {
+                document.getElementById("email-error").style.display = "block";
+                emailOK = false;
+            }
+
+            // ===== Username: at least 6 letters or numbers =====
+            let usernameInput = document.getElementById("username").value;
+            let usernameRegex = /^[A-Za-z0-9]{6,}$/;
+
+            if (usernameRegex.test(usernameInput)) {
+                document.getElementById("username-error").style.display = "none";
+                usernameOK = true;
+            }
+            else {
+                document.getElementById("username-error").style.display = "block";
+                usernameOK = false;
+            }
+
+            // ===== Password: at least 6 letters or numbers =====
+            let passwordInput = document.getElementById("password").value;
+            let passwordRegex = /^[A-Za-z0-9]{6,}$/;
+
+            if (passwordRegex.test(passwordInput)) {
+                document.getElementById("password-error").style.display = "none";
+                passwordOK = true;
+            }
+            else {
+                document.getElementById("password-error").style.display = "block";
+                passwordOK = false;
+            }
+
+            // ===== Confirm password =====
+            let confirmInput = document.getElementById("confirmPassword").value;
+
+            if (confirmInput === passwordInput && confirmInput.length > 0) {
+                document.getElementById("confirm-password-error").style.display = "none";
+                confirmOK = true;
+            } else {
+                document.getElementById("confirm-password-error").style.display = "block";
+                confirmOK = false;
+            }
+
+            // Enable or disable submit button
+            if (nameOK && addressOK && phoneOK && emailOK && usernameOK && passwordOK && confirmOK) {
+                submitBtn.disabled = false;
+            }
+            else {
+                submitBtn.disabled = true;
+            }
         }
 
-        // Form submission
-        form.addEventListener('submit', function (e) {
+        // Submit form
+        form.addEventListener("submit", function (e) {
             e.preventDefault();
 
-            let allValid = true;
-            const formData = {};
-
-            // Validate all fields
-            Object.keys(validationRules).forEach(field => {
-                const value = document.getElementById(field).value.trim();
-                formData[field] = value;
-
-                if (!validateField(field, value)) {
-                    allValid = false;
-                }
-            });
-
-            // Validate confirm password
-            if (!ConfirmPassword()) {
-                allValid = false;
-            }
-
-            if (allValid) {
-                // Show success message and redirect
-                alert("Registration successful!");
-                window.location.href = "seller-login.html";
-            }
-            else {
-                alert("Please fix all errors before submitting");
-            }
+            alert("Registration successful!");
+            window.location.href = "seller-login.html";
         });
-
-        // Initialize validation on page load
-        document.addEventListener('DOMContentLoaded',
-            () => {
-                // Focus on first input
-                document.getElementById('name').focus();
-
-                // Initialize submit button as disabled
-                submitBtn.disabled = true;
-            });
     </script>
 </body>
 
