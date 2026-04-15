@@ -8,7 +8,7 @@
         * {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            box-sizing: border-box; /* Makes width/height include padding and border */
             font-family: Arial, sans-serif;
         }
         
@@ -19,13 +19,13 @@
         
         .container {
             max-width: 600px;
-            margin: 0 auto;
+            margin: 0 auto; /* Centers container horizontally */
         }
         
         header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            display: flex; /* Creates a flexible box layout */
+            justify-content: space-between; /* Spaces items evenly with max space between */
+            align-items: center; /* Vertically centers items in the flex container */
             margin-bottom: 30px;
             padding-bottom: 20px;
             border-bottom: 1px solid #ddd;
@@ -39,12 +39,12 @@
         
         .nav-links a {
             color: #1a73e8;
-            margin-left: 20px;
+            margin-left: 20px; /* Left margin for spacing between navigation links */
             font-size: 16px;
         }
         
         .back-link {
-            display: inline-block;
+            display: inline-block; /* Allows block properties but stays inline */
             margin-bottom: 20px;
             color: #1a73e8;
             text-decoration: none;
@@ -53,7 +53,7 @@
         .upload-form {
             background: white;
             padding: 30px;
-            border-radius: 8px;
+            border-radius: 8px; /* Rounded corners */
         }
         
         .form-group {
@@ -61,7 +61,7 @@
         }
         
         label {
-            display: block;
+            display: block; /* Makes label take full width (block element) */
             margin-bottom: 5px;
             font-weight: bold;
         }
@@ -74,11 +74,11 @@
         }
         
         textarea {
-            height: 100px;
+            height: 100px; /* Fixed height for textarea */
         }
         
         .file-upload {
-            border: 2px dashed #ddd;
+            border: 2px dashed #ddd; /* Dashed border for visual upload area */
             border-radius: 4px;
             padding: 20px;
             text-align: center;
@@ -91,7 +91,7 @@
             padding: 12px 20px;
             border-radius: 4px;
             font-size: 16px;
-            cursor: pointer;
+            cursor: pointer; /* Changes cursor to hand on hover */
             width: 100%;
         }
         
@@ -102,7 +102,7 @@
             border-radius: 4px;
             margin-top: 20px;
             text-align: center;
-            display: none;
+            display: none; /* Hidden by default, will be shown with jst */
         }
         
         footer {
