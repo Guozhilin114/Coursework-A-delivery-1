@@ -279,77 +279,102 @@
             }
         ];
 
-        // Function to display cars mae by ztc
-        function displayCars(carsToShow) {
-            const carsContainer = document.getElementById('carsContainer');
-            const scrollHint = document.getElementById('scrollHint');
-            carsContainer.innerHTML = '';
-
-            if (carsToShow.length === 0) {
-                carsContainer.innerHTML = '<div class="no-results">No matching cars found. Try a different search.</div>';
-                scrollHint.style.display = 'none';
-                return;
-            }
-
-            carsToShow.forEach(car => {
-                const carCard = document.createElement('div');
-                carCard.className = 'car-card';
-
-                carCard.innerHTML = `
-                    <img src="${car.image}" alt="${car.name}" class="car-image">
-                    <div class="car-info">
-                        <h3 class="car-name">${car.name}</h3>
-                        <p class="car-details">${car.details}</p>
-                        <div class="car-price">${car.price}</div>
-                    </div>
-                `;
-
-                // Make car card clickable to go to detail page made by ztc
-                carCard.addEventListener('click', () => {
-                    window.location.href = `car-detail.html?id=${car.id}`;
-                });
-
-                carsContainer.appendChild(carCard);
-            });
-
-            // 如果车辆超过4个，显示滚动提示，不超过你们可以删掉，但我建议是六个 made by jls
-            if (carsToShow.length > 4) {
-                scrollHint.style.display = 'block';
-            } else {
-                scrollHint.style.display = 'none';
-            }
+    // Function: Display list of cars and search made by ztc
+    function displayCars(carsToShow) {
+        // Get the DOM element for cars container
+        const carsContainer = document.getElementById('carsContainer');
+        
+        // Get the DOM element for scroll hint
+        const scrollHint = document.getElementById('scrollHint');
+        
+        // Clear existing content in the container
+        carsContainer.innerHTML = '';
+    
+        // If there are no cars to show
+        if (carsToShow.length === 0) {
+            // Display no results message
+            carsContainer.innerHTML = '<div class="no-results">No matching cars found. Try a different search.</div>';
+            
+            // Hide scroll hint
+            scrollHint.style.display = 'none';
+            
+            // End function execution
+            return;
         }
-
-        // Search function
-        function searchCars() {
-            const searchInput = document.getElementById('searchInput');
-            const searchTerm = searchInput.value.toLowerCase().trim();
-
-            if (!searchTerm) {
-                displayCars(cars);
-                return;
-            }
-            //search by name/details/price
-            const filteredCars = cars.filter(car => {
-                return car.name.toLowerCase().includes(searchTerm) ||
-                    car.details.toLowerCase().includes(searchTerm) ||
-                    car.price.toLowerCase().includes(searchTerm);
+    
+        // Loop through each car to display
+        carsToShow.forEach(car => {
+            // Create car card div element
+            const carCard = document.createElement('div');
+            
+            // Set card CSS class name
+            carCard.className = 'car-card';
+    
+            // Set card inner HTML structure
+            carCard.innerHTML = `
+                <img src="${car.image}" alt="${car.name}" class="car-image">
+                <div class="car-info">
+                    <h3 class="car-name">${car.name}</h3>
+                    <p class="car-details">${car.details}</p>
+                    <div class="car-price">${car.price}</div>
+                </div>
+            `;
+    
+            // Add click event: when clicking car card, navigate to detail page
+            carCard.addEventListener('click', () => {
+                window.location.href = `car-detail.html?id=${car.id}`;
             });
-
-            displayCars(filteredCars);
-        }
-
-        // Initialize page
-        document.addEventListener('DOMContentLoaded', () => {
-            displayCars(cars);
-
-            // Add search event listener
-            const searchInput = document.getElementById('searchInput');
-            searchInput.addEventListener('input', searchCars);
-
-            // 自动聚焦到搜索框
-            searchInput.focus();
+    
+            // Append car card to container
+            carsContainer.appendChild(carCard);
         });
+    
+        // If more than 4 cars, show scroll hint; otherwise hide it
+        if (carsToShow.length > 4) {
+            scrollHint.style.display = 'block';
+        } else {
+            scrollHint.style.display = 'none';
+        }
+    }
+    
+    // Function: Search cars
+    function searchCars() {
+        // Get search input element
+        const searchInput = document.getElementById('searchInput');
+        
+        // Get search term, convert to lowercase, trim spaces
+        const searchTerm = searchInput.value.toLowerCase().trim();
+    
+        // If search term is empty
+        if (!searchTerm) {
+            // Display all cars
+            displayCars(cars);
+            return;
+        }
+        
+        // Filter cars by name/details/price
+        const filteredCars = cars.filter(car => {
+            return car.name.toLowerCase().includes(searchTerm) ||
+                   car.details.toLowerCase().includes(searchTerm) ||
+                   car.price.toLowerCase().includes(searchTerm);
+        });
+    
+        // Display filtered cars
+        displayCars(filteredCars);
+    }
+    
+    // Page initialization
+    document.addEventListener('DOMContentLoaded', () => {
+        // Initially display all cars
+        displayCars(cars);
+    
+        // Add search input event listener
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('input', searchCars);
+    
+        // Auto focus on search input
+        searchInput.focus();
+    });
     </script>
 </body>
 
