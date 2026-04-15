@@ -147,6 +147,40 @@
             align-items: center;
         }
     </style>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Universal box-sizing for consistent element dimensions */
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Ensure media elements scale responsively without overflow */
+        img,
+        video,
+        iframe {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Responsive container: full-width on mobile, centered with max-width on desktop */
+        .container {
+            width: min(100% - 2rem, 1200px);
+            margin: 0 auto;
+        }
+
+        /* Fluid typography: scales font-size between mobile, tablet, and desktop */
+        html {
+            font-size: clamp(1rem, 0.75rem + 0.5vw, 1.25rem);
+        }
+
+        /* Adaptive grid: auto-adjusts columns based on available screen space */
+        .responsive-grid {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+    </style>
 </head>
 
 <body>
